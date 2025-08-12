@@ -1,18 +1,18 @@
-import { DomContainerObject, GameObject, World, enableDebug } from 'kiwiengine';
+import { GameObject, World, enableDebug } from 'kiwiengine';
+import { JoyObject, JoyObjectOptions } from './joy';
 
 let world: World | undefined;
 const pendingObjects: GameObject[] = [];
 
-function $(opts?: { el?: HTMLElement }) {
-  const go = new GameObject();
-  if (opts) {
-    if (opts.el) go.add(new DomContainerObject({ el: opts.el }));
-  }
+function $(opts?: JoyObjectOptions) {
+  const go = new JoyObject(opts);
   world ? world.add(go) : pendingObjects.push(go);
   return go;
 }
 
 $.enableDebug = enableDebug;
+
+(window as any).$ = $;
 
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.style.width = '100%';
@@ -38,5 +38,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   pendingObjects.length = 0;
 });
-
-(window as any).$ = $;
