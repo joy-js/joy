@@ -1,9 +1,15 @@
-import { World, enableDebug } from 'kiwiengine';
+import { DomContainerObject, GameObject, World, enableDebug } from 'kiwiengine';
 
 let world: World | undefined;
+const pendingObjects: GameObject[] = [];
 
-function $() {
-
+function $(opts?: { el?: HTMLElement }) {
+  const go = new GameObject();
+  if (opts) {
+    if (opts.el) go.add(new DomContainerObject({ el: opts.el }));
+  }
+  world ? world.add(go) : pendingObjects.push(go);
+  return go;
 }
 
 $.enableDebug = enableDebug;
@@ -26,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
   world.container.style.width = '100%';
   world.container.style.height = '100%';
   document.body.appendChild(world.container);
+
+  for (const go of pendingObjects) {
+    world.add(go);
+  }
+  pendingObjects.length = 0;
 });
 
 (window as any).$ = $;
