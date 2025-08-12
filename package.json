@@ -1,0 +1,15 @@
+{
+  "name": "joylib",
+  "version": "0.0.2-alpha",
+  "types": "./lib/types/index.d.ts",
+  "main": "./lib/index.js",
+  "unpkg": "lib/joylib.min.js",
+  "jsdelivr": "lib/joylib.min.js",
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --minify --outfile=lib/joylib.min.js"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.8"
+  },
+  "packageManager": "yarn@1.22.22"
+}
