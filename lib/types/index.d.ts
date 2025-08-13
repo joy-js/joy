@@ -1,2 +1,2 @@
-declare function $(): void;
+export {};
 //# sourceMappingURL=index.d.ts.map

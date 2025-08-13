@@ -1,10 +1,10 @@
-const testEl = document.createElement('div');
+var testEl = document.createElement('div');
 testEl.textContent = 'Hello World';
 testEl.style.color = 'red';
-testEl.onclick = () => alert('click');
+testEl.onclick = function () { alert('click'); };
 
-const go = $({ el: testEl });
+var go = $({ el: testEl });
 go.alpha = 0.5;
-go.on('update', (dt) => {
-  go.rotation += dt;
+go.on('update', function (deltaTime) {
+  go.rotation += deltaTime;
 });

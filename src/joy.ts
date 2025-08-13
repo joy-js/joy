@@ -19,6 +19,9 @@ export class JoyObject extends GameObject {
     if (this.#el) world.container.appendChild(this.#el);
   }
 
+  get rotation() { return super.rotation * (180 / Math.PI); }
+  set rotation(v: number) { super.rotation = v * (Math.PI / 180); }
+
   get el() {
     return this.#el;
   }
