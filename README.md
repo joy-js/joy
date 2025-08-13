@@ -93,7 +93,7 @@ var player = $({ /* physics settings */ });
 var enemy = $({ /* physics settings */ });
 
 $.on('collisionStart', (go1, go2) => {
-  if (go1 === player && go2 === enemy) {
+  if (go1 == player && go2 == enemy) {
     console.log('Collision detected!');
   }
 });

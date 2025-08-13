@@ -85,7 +85,7 @@ var player = $({ /* 물리 설정 */ });
 var enemy = $({ /* 물리 설정 */ });
 
 $.on('collisionStart', (go1, go2) => {
-  if (go1 === player && go2 === enemy) {
+  if (go1 == player && go2 == enemy) {
     console.log('충돌 발생!');
   }
 });
