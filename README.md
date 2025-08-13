@@ -46,7 +46,7 @@ npx serve .
 게임 오브젝트 생성에 사용되는 기본 옵션들은 다음과 같습니다.
 ```js
 var go = $({
-  image: '/assets/dog.png', // 오브젝트의 이미지 지정
+  image: 'assets/dog.png', // 오브젝트의 이미지 지정
   x: 100, // 게임 오브젝트의 x 좌표
   y: 200, // 게임 오브젝트의 y 좌표
   scale: 2, // 게임 오브젝트의 크기 비율 (scaleX, scaleY로 각각 지정할 수도 있습니다.)
