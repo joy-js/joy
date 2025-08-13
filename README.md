@@ -26,7 +26,19 @@ go.on('update', function (deltaTime) {
 });
 ```
 
-이후 `index.html`을 더블클릭해 실행하거나, `index.html`과 `game.js`를 인터넷에 업로드해 접속합니다.
+이후 로컬 서버를 실행해 `index.html`에 접속하거나, `index.html`과 `game.js`를 인터넷에 업로드해 접속합니다.
+
+```bash
+# 로컬 서버 실행 방법
+
+# 파이썬이 설치되어 있는 경우
+python3 -m http.server 8000
+
+# node.js가 설치되어 있는 경우
+npx serve .
+```
+
+[인터넷 업로드 예시](https://joy-js.github.io/joy/examples/dog/)
 
 ## 함수 `$`사용하기
 `$`는 `joy`의 모든 기능을 담고 있는 함수입니다. 단순히 `$()`로 게임 오브젝트를 생성하는 것에서부터, `$.gameWidth`와 같은 각종 전역 변수들을 내장하고 있습니다.
