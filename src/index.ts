@@ -1,13 +1,13 @@
 import { AssetSource, GameObject, World, enableDebug, preload } from 'kiwiengine';
 import { JoyObject, JoyObjectOptions } from './joy';
 
-let gravity = 0;
-let world: World | undefined;
-const pendingObjects: GameObject[] = [];
+const world = new World({ backgroundColor: 0x000000 });
+world.container.style.width = '100%';
+world.container.style.height = '100%';
 
 function $(opts?: JoyObjectOptions) {
   const go = new JoyObject(opts);
-  world ? world.add(go) : pendingObjects.push(go);
+  world.add(go);
   return go;
 }
 
@@ -16,6 +16,10 @@ $.preload = async (assets: AssetSource[], percentCallback: (percent: number) => 
   await preload(assets, (progress) => {
     percentCallback(progress * 100);
   });
+};
+
+$.on = (eventName: 'collisionStart' | 'update', listener: (go1: GameObject, go2: GameObject) => void) => {
+  world?.on(eventName, listener);
 };
 
 $.gameWidth = window.innerWidth;
@@ -27,13 +31,8 @@ window.addEventListener('resize', () => {
 });
 
 Object.defineProperty($, 'gravity', {
-  get() {
-    return gravity;
-  },
-  set(value: number) {
-    gravity = value;
-    if (world) world.gravity = value;
-  },
+  get() { return world.gravity; },
+  set(value: number) { world.gravity = value; },
 });
 
 (window as any).$ = $;
@@ -52,13 +51,5 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.style.color = 'white';
   document.body.style.overflow = 'hidden';
 
-  world = new World({ backgroundColor: 0x000000, gravity });
-  world.container.style.width = '100%';
-  world.container.style.height = '100%';
   document.body.appendChild(world.container);
-
-  for (const go of pendingObjects) {
-    world.add(go);
-  }
-  pendingObjects.length = 0;
 });

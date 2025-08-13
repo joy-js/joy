@@ -76,7 +76,19 @@ var go = $({
   velocityX: 10, // x축 속도
   velocityY: 20, // y축 속도
   fixedRotation: true, // 물리에 의한 회전 방지
-})
+});
+```
+
+이렇게 지정한 충돌체는 다음과 같이 충돌 체크를 할 수 있습니다.
+```js
+var player = $({ /* 물리 설정 */ });
+var enemy = $({ /* 물리 설정 */ });
+
+$.on('collisionStart', (go1, go2) => {
+  if (go1 === player && go2 === enemy) {
+    console.log('충돌 발생!');
+  }
+});
 ```
 
 ### 게임 오브젝트 함수 목록
@@ -90,6 +102,7 @@ var go = $({
 - `$.gameWidth` 게임 화면의 너비
 - `$.gameHeight` 게임 화면의 높이
 - `$.gravity` 게임의 중력 설정
+- `$.on(eventName, listener)` 전역 이벤트를 등록합니다.
 - `await $.preload(image, sound, ..., function (percent) { /* 퍼센트를 화면에 표시하는 등 */ })` 게임에서 사용되는 리소스들을 미리 로딩합니다.
 
 ## 조금 더 규모있는 게임을 만드려면...
