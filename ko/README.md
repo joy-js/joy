@@ -101,6 +101,8 @@ $.on('collisionStart', (go1, go2) => {
 ### 전역 변수/함수 목록
 - `$.gameWidth` 게임 화면의 너비
 - `$.gameHeight` 게임 화면의 높이
+- `$.cameraX` 카메라의 x축 위치
+- `$.cameraY` 카메라의 y축 위치
 - `$.gravity` 게임의 중력 설정
 - `$.on(eventName, listener)` 전역 이벤트를 등록합니다.
 - `await $.preload(image, sound, ..., function (percent) { /* 퍼센트를 화면에 표시하는 등 */ })` 게임에서 사용되는 리소스들을 미리 로딩합니다.

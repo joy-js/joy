@@ -111,6 +111,8 @@ $.on('collisionStart', (go1, go2) => {
 
 * `$.gameWidth` — Game screen width
 * `$.gameHeight` — Game screen height
+* `$.cameraX` — Camera x position
+* `$.cameraY` — Camera y position
 * `$.gravity` — Game gravity setting
 * `$.on(eventName, listener)` — Registers a global event listener
 * `await $.preload(image, sound, ..., function (percent) { /* show loading progress */ })` — Preloads resources for the game

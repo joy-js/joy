@@ -35,6 +35,16 @@ Object.defineProperty($, 'gravity', {
   set(value: number) { world.gravity = value; },
 });
 
+Object.defineProperty($, 'cameraX', {
+  get() { return world.cameraX; },
+  set(value: number) { world.cameraX = value; },
+});
+
+Object.defineProperty($, 'cameraY', {
+  get() { return world.cameraY; },
+  set(value: number) { world.cameraY = value; },
+});
+
 (window as any).$ = $;
 
 document.addEventListener('DOMContentLoaded', () => {

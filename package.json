@@ -1,6 +1,6 @@
 {
   "name": "joylib",
-  "version": "0.0.8-alpha",
+  "version": "0.0.9-alpha",
   "types": "./lib/types/index.d.ts",
   "main": "./lib/index.js",
   "unpkg": "lib/joylib.min.js",
